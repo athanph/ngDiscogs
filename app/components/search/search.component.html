@@ -1,0 +1,33 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <header>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Welcome to ngDiscogs</h1>
+                </div>
+            </div>
+        </header>
+        <form>
+            <div class="input-group">
+            <input type="text" [(ngModel)]="searchText" name="searchText" placeholder="Find an artist" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" (click)="search()">Search</button>
+            </span>
+            </div><!-- /input-group -->
+        </form>
+    </div>
+</div>
+<hr/>
+
+<div *ngIf="searchRes">
+    <h3>You searched for: <strong>{{searchText}}</strong></h3>
+    <div class="row">
+        <div class="col-md-2" *ngFor="let res of searchRes" style="font-size: .8em; min-height: 250px; max-height: 260px;">
+            <div class="text-center">
+                <img [src]="res.thumb" alt="{{res.title}}">
+                <p><a routerLink="/artist/{{res.id}}">{{ res.title }}</a></p>
+            </div>
+        </div>
+    </div>
+</div>

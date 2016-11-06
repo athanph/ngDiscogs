@@ -1,0 +1,33 @@
+
+<div *ngIf="artist">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{artist.images.length > 0 ? artist.images[0].resource_url : 'http://placehold.it/100'}}" style="width: 100%">
+        </div>
+        <div class="col-md-9">
+            <h1>{{artist.name}}</h1>
+            <p>{{artist.profile}}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Releases</h2>
+            <span>Page  of</span>
+            <ul  class="list-group release-list">
+                <li *ngFor="let release of releases" class="list-group-item">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="{{release.thumb.length > 0 ? release.thumb : 'http://placehold.it/50'}}" style="width: 50px">
+                        </div>
+                        <div class="media-body">                        
+                            <span><a routerLink="/release/{{release.id}}"><strong>{{release.title}}</strong></a> ({{release.year}})</span><br/>
+                            <span>Format: {{release.format}}</span><br/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

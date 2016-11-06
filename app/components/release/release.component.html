@@ -1,0 +1,27 @@
+<div *ngIf="release">
+    <div class="row">
+        <div class="col-md-12">
+            <h4><span *ngFor="let artist of release.artists; let i = index; let last = last">{{artist.name}}<span *ngIf="release.artists.length > 1 && !last">, </span></span></h4>
+            <h3>{{release.title}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{release.images[0].resource_url}}" alt="{{release.title}}" style="width: 100%; margin-bottom: 20px;" />                          
+             <p class="well">
+               <strong>Genre:</strong> <span *ngFor="let genre of release.genres; let i = index; let last = last">{{genre}}<span *ngIf="release.genres.length > 1 && !last">, </span></span><br/>
+               <strong>Format:</strong> <span *ngFor="let format of release.formats; let i = index; let last = last">{{format.name}}<span *ngIf="release.formats.length > 1 && !last">, </span></span>
+                    <span *ngFor="let desc of release.formats.descriptions">{{desc}}</span><br/>
+               <strong>Year:</strong> {{release.year}}<br/>
+               <strong>Country:</strong> {{release.country}}
+            </p>
+        </div>
+        <div class="col-md-8">
+            <ul class="list-group tracklist">
+                <li class="list-group-item" *ngFor="let track of release.tracklist">
+                    {{track.position}}. {{track.title}} - {{track.duration}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
